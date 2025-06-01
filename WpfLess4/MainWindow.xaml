@@ -7,16 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
 
-    <Window.Resources>
-        <Style TargetType="Border">
+        <Window.Resources>
+        <Style x:Key="BorderStyle" TargetType="Border">
             <Setter Property="Margin" Value="1"/>
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="CornerRadius" Value="15"/>
         </Style>
 
         <Style x:Key="OtherButtons" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="StandardButtons" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
 
@@ -32,7 +40,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            
+
         </Grid>
 
         <Grid Grid.Row="2">
@@ -52,7 +60,76 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
+
+            <Border DataContext="{Binding KeyNumber0}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="0" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber1}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="1" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber2}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="2" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber3}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="3" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber4}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="4" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber5}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="5" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber6}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="6" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber7}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="7" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber8}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="8" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber9}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="9" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyNumber10}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="10" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
             
+            <Border DataContext="{Binding KeyNumber11}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="11" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+            
+            <Border DataContext="{Binding KeyNumber12}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="12" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyBackspace}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="13" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource OtherButtons}" Text="{Binding Text}"/>
+            </Border>
         </Grid>
 
         <Grid Grid.Row="3">
@@ -73,95 +150,88 @@
                 <ColumnDefinition Width="1.25*"/>
             </Grid.ColumnDefinitions>
 
-            <Border DataContext="{Binding KeyTab}"
+            <Border DataContext="{Binding KeyTab}" Style="{StaticResource BorderStyle}"
                     Grid.Column="0" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="{Binding OtherButtons}" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource OtherButtons}" Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyQ}"
+            <Border DataContext="{Binding KeyQ}" Style="{StaticResource BorderStyle}"
                     Grid.Column="1" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyW}"
+            <Border DataContext="{Binding KeyW}" Style="{StaticResource BorderStyle}"
                     Grid.Column="2" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}" 
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyE}"
+            <Border DataContext="{Binding KeyE}" Style="{StaticResource BorderStyle}"
                     Grid.Column="3" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyR}"
+            <Border DataContext="{Binding KeyR}" Style="{StaticResource BorderStyle}"
                     Grid.Column="4" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyT}"
+            <Border DataContext="{Binding KeyT}" Style="{StaticResource BorderStyle}"
                     Grid.Column="5" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyY}"
+            <Border DataContext="{Binding KeyY}" Style="{StaticResource BorderStyle}"
                     Grid.Column="6" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyU}"
+            <Border DataContext="{Binding KeyU}" Style="{StaticResource BorderStyle}"
                     Grid.Column="7" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyI}"
+            <Border DataContext="{Binding KeyI}" Style="{StaticResource BorderStyle}"
                     Grid.Column="8" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyO}"
+            <Border DataContext="{Binding KeyO}" Style="{StaticResource BorderStyle}"
                     Grid.Column="9" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyP}"
+            <Border DataContext="{Binding KeyP}" Style="{StaticResource BorderStyle}"
                     Grid.Column="10" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyLeftAltBr}"
+            <Border DataContext="{Binding KeyLeftAltBr}" Style="{StaticResource BorderStyle}"
                     Grid.Column="11" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
-            <Border DataContext="{Binding KeyRightAltBr}"
+            <Border DataContext="{Binding KeyRightAltBr}" Style="{StaticResource BorderStyle}"
                     Grid.Column="12" Background="{Binding Color}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30" Text="{Binding Text}"/>
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyStick}" 
+                    Style="{StaticResource BorderStyle}"
+                    Grid.Column="13" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}"
+                           Text="{Binding Text}"/>
             </Border>
 
         </Grid>
@@ -182,6 +252,70 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
+
+            <Border DataContext="{Binding KeyCapsLock}" Style="{StaticResource BorderStyle}"
+                    Grid.Column="0" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource OtherButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyA}" Style="{StaticResource BorderStyle}"
+        Grid.Column="1" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyS}" Style="{StaticResource BorderStyle}"
+        Grid.Column="2" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+            <Border DataContext="{Binding KeyD}" Style="{StaticResource BorderStyle}"
+        Grid.Column="3" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyF}" Style="{StaticResource BorderStyle}"
+        Grid.Column="4" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyG}" Style="{StaticResource BorderStyle}"
+        Grid.Column="5" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyH}" Style="{StaticResource BorderStyle}"
+        Grid.Column="6" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyJ}" Style="{StaticResource BorderStyle}"
+        Grid.Column="7" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyK}" Style="{StaticResource BorderStyle}"
+        Grid.Column="8" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyL}" Style="{StaticResource BorderStyle}"
+        Grid.Column="9" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding Key2Dot}" Style="{StaticResource BorderStyle}"
+        Grid.Column="10" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+            
+            <Border DataContext="{Binding KeyQuot}" Style="{StaticResource BorderStyle}"
+        Grid.Column="11" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource StandardButtons}" Text="{Binding Text}"/>
+            </Border>
+
+            <Border DataContext="{Binding KeyEnter}" Style="{StaticResource BorderStyle}"
+        Grid.Column="12" Background="{Binding Color}">
+                <TextBlock Style="{StaticResource OtherButtons}" Text="{Binding Text}"/>
+            </Border>
         </Grid>
 
         <Grid Grid.Row="5">
@@ -215,5 +349,4 @@
 
     </Grid>
 
-    
 </Window>
