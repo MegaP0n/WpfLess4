@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,23 +22,24 @@ namespace WpfLess4
     /// </summary>
     public partial class MainWindow : Window
     {
-            public Keyboard Keyboard { get; set; }
+        public Keyboard Keyboard { get; set; }
         public MainWindow()
         {
             Keyboard = new Keyboard();
-    
+
             InitializeComponent();
             KeyboardGrid.DataContext = Keyboard;
         }
-    
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.IsRepeat) return;
-    
+
             switch (e.Key)
             {
                 case System.Windows.Input.Key.LeftShift:
                     Keyboard.OnShiftTrigger();
+                    Keyboard.KeyShift.Color = new SolidColorBrush(Colors.DarkGray);
                     break;
                 case System.Windows.Input.Key.CapsLock:
                     Keyboard.OnCapsLockTrigger();
@@ -52,12 +55,15 @@ namespace WpfLess4
                 case System.Windows.Input.Key.LeftShift:
                     Keyboard.OnShiftTrigger();
                     break;
+                case System.Windows.Input.Key.Tab:
+                    Keyboard.KeyTab.Color = new SolidColorBrush(Colors.Gray);
+                    break;
                 default:
                     break;
             }
         }
     }
-    
+
     public class Keyboard
     {
         public Key KeyNumber0 { get; set; }
@@ -74,7 +80,7 @@ namespace WpfLess4
         public Key KeyNumber11 { get; set; }
         public Key KeyNumber12 { get; set; }
         public Key KeyBackspace { get; set; }
-    
+
         public Key KeyQ { get; set; }
         public Key KeyW { get; set; }
         public Key KeyE { get; set; }
@@ -102,11 +108,26 @@ namespace WpfLess4
         public Key Key2Dot { get; set; }
         public Key KeyQuot { get; set; }
         public Key KeyEnter { get; set; }
-    
-    
+        public Key KeyShift { get; set; }
+        public Key KeyZ { get; set; }
+        public Key KeyX { get; set; }
+        public Key KeyC { get; set; }
+        public Key KeyV { get; set; }
+        public Key KeyB { get; set; }
+        public Key KeyN { get; set; }
+        public Key KeyM { get; set; }
+        public Key KeyComma { get; set; }
+        public Key KeyDot { get; set; }
+        public Key KeyAltStick { get; set; }
+        public Key KeyCtrl { get; set; }
+        public Key KeyWin { get; set; }
+        public Key KeySpace { get; set; }
+        public Key KeyAlt { get; set; }
+
+
         public event Action ShiftTrigger;
         public event Action CapsLockTrigger;
-    
+
         public Keyboard()
         {
             KeyNumber0 = CreateNumberKey("`", "~", new SolidColorBrush(Colors.Red));
@@ -123,9 +144,9 @@ namespace WpfLess4
             KeyNumber11 = CreateNumberKey("-", "_", new SolidColorBrush(Colors.Lime));
             KeyNumber12 = CreateNumberKey("=", "+", new SolidColorBrush(Colors.Lime));
             KeyBackspace = CreateSpecialKey("Backspace", new SolidColorBrush(Colors.Gray));
-    
+
             KeyTab = CreateSpecialKey("Tab", new SolidColorBrush(Colors.Gray));
-    
+
             KeyQ = CreateStandartKey("q", "Q", new SolidColorBrush(Colors.Red));
             KeyW = CreateStandartKey("w", "W", new SolidColorBrush(Colors.Yellow));
             KeyE = CreateStandartKey("e", "E", new SolidColorBrush(Colors.Lime));
@@ -139,7 +160,7 @@ namespace WpfLess4
             KeyLeftAltBr = CreateStandartKey("[", "{", new SolidColorBrush(Colors.Lime));
             KeyRightAltBr = CreateStandartKey("]", "}", new SolidColorBrush(Colors.Lime));
             KeyStick = CreateStandartKey("|", "\\", new SolidColorBrush(Colors.Lime));
-    
+
             KeyCapsLock = CreateSpecialKey("Caps Lock", new SolidColorBrush(Colors.Gray));
             KeyA = CreateStandartKey("a", "A", new SolidColorBrush(Colors.Red));
             KeyS = CreateStandartKey("s", "S", new SolidColorBrush(Colors.Yellow));
@@ -153,8 +174,28 @@ namespace WpfLess4
             Key2Dot = CreateStandartKey(";", ":", new SolidColorBrush(Colors.Lime));
             KeyQuot = CreateStandartKey("'", "\"", new SolidColorBrush(Colors.Lime));
             KeyEnter = CreateSpecialKey("Enter", new SolidColorBrush(Colors.Gray));
+
+            KeyShift = CreateSpecialKey("Shift", new SolidColorBrush(Colors.Gray));
+            KeyZ = CreateStandartKey("z", "Z", new SolidColorBrush(Colors.Red));
+            KeyX = CreateStandartKey("x", "X", new SolidColorBrush(Colors.Yellow));
+            KeyC = CreateStandartKey("c", "C", new SolidColorBrush(Colors.Lime));
+            KeyV = CreateStandartKey("v", "V", new SolidColorBrush(Colors.Cyan));
+            KeyB = CreateStandartKey("b", "B", new SolidColorBrush(Colors.Cyan));
+            KeyN = CreateStandartKey("n", "N", new SolidColorBrush(Colors.Purple));
+            KeyM = CreateStandartKey("m", "M", new SolidColorBrush(Colors.Purple));
+            KeyComma = CreateStandartKey(",", "<", new SolidColorBrush(Colors.Red));
+            KeyDot = CreateStandartKey(".", ">", new SolidColorBrush(Colors.Yellow));
+            KeyAltStick = CreateStandartKey("/", "?", new SolidColorBrush(Colors.Lime));
+
+            KeyCtrl = CreateSpecialKey("Ctrl", new SolidColorBrush(Colors.Gray));
+            KeyWin = CreateSpecialKey("Win", new SolidColorBrush(Colors.Gray));
+            KeyAlt = CreateSpecialKey("Alt", new SolidColorBrush(Colors.Gray));
+            KeySpace = CreateSpecialKey("Space", new SolidColorBrush(Colors.Gold));
+            
+
+
         }
-    
+
         private Key CreateStandartKey(
             string defaultState,
             string alterState,
@@ -164,23 +205,23 @@ namespace WpfLess4
             {
                 Color = color
             };
-    
+
             ShiftTrigger += key.ChangeState;
             CapsLockTrigger += key.ChangeState;
-    
+
             return key;
         }
-    
+
         private Key CreateSpecialKey(string defaultState, SolidColorBrush color)
         {
             var key = new Key(defaultState, defaultState)
             {
                 Color = color
             };
-    
+
             return key;
         }
-    
+
         private Key CreateNumberKey(string defaultState, string alterState,
             SolidColorBrush color)
         {
@@ -188,12 +229,12 @@ namespace WpfLess4
             {
                 Color = color
             };
-    
+
             ShiftTrigger += key.ChangeState;
-    
+
             return key;
         }
-    
+
         public void OnShiftTrigger()
         {
             ShiftTrigger?.Invoke();
@@ -203,13 +244,13 @@ namespace WpfLess4
             CapsLockTrigger?.Invoke();
         }
     }
-    
+
     public class Key : INotifyPropertyChanged
     {
         private string _defaultState;
         private string _alterState;
         private bool _isDefaultState;
-    
+
         public string Text
         {
             get
@@ -218,7 +259,7 @@ namespace WpfLess4
                     ? _defaultState : _alterState;
             }
         }
-    
+
         public SolidColorBrush Color { get; set; }
         public Key(string defaultState, string alterState)
         {
@@ -226,20 +267,18 @@ namespace WpfLess4
             _alterState = alterState;
             _isDefaultState = true;
         }
-    
+
         public void ChangeState()
         {
             _isDefaultState = !_isDefaultState;
             OnPropertyChanged("Text");
         }
-    
-    
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-        }
 }
-
